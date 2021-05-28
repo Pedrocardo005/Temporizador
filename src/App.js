@@ -5,7 +5,7 @@ import Temporizador from './Components/Temporizador'
 
 function App(){
   return (
-    <div class="App">
+    <div className="App">
       <Title texto="Temporizador" />
       <Temporizador/>
     </div>
