@@ -10,8 +10,10 @@ const Inputs = (props) => {
             setSeg(0)
         } else if(e.target.value > 59){
             setSeg(59);
+        } else if(e.target.value === ""){
+            setSeg(0);
         } else {
-            setSeg(e.target.value);
+            setSeg(e.target.value)
         }
     }
 
@@ -20,7 +22,9 @@ const Inputs = (props) => {
             setMin(0)
         } else if(e.target.value > 59){
             setMin(59);
-        } else {
+        } else if(e.target.value === ""){
+            setMin(0);
+        }else {
             setMin(e.target.value);
         }
     }
@@ -30,7 +34,9 @@ const Inputs = (props) => {
             setHor(0)
         } else if(e.target.value > 24){
             setHor(24);
-        } else {
+        } else if(e.target.value === ""){
+            setHor(0);
+        }else{
             setHor(e.target.value);
         }
     }
@@ -43,19 +49,20 @@ const Inputs = (props) => {
 
     const pegarDados = (valores) => {
         valores.preventDefault();
+        if (seg !== "" && min !== "" && hor !== ""){
+            props.segundos(seg)
+            props.minutos(min)
+            props.horas(hor)
 
-        props.segundos(seg)
-        props.minutos(min)
-        props.horas(hor)
-
-        zerarTempo();
+            zerarTempo();
+        }
     }
 
     return(
         <form>
-            <input type="number" value={hor} onChange={limitHor} id="botao-input1"/>
-            <input type="number" value={min} onChange={limitMin} id="botao-input2" />
-            <input type="number" value={seg} onChange={limitSeg} id="botao-input3" />
+            <input type="number" value={hor} onChange={limitHor} />
+            <input type="number" value={min} onChange={limitMin} />
+            <input type="number" value={seg} onChange={limitSeg} />
             <button type="submit" onClick={pegarDados} id="botao-input4" >Adicionar</button>
         </form>
     )

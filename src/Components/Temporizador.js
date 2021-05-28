@@ -9,17 +9,19 @@ const Temporizador = (props) => {
     const [segundos, setSegundos] = useState(0);
     const [minutos, setMinutos] = useState(0);
     const [horas, setHoras] = useState(0);
-    const [stop, setStop] = useState(true);
     const [parcial, setParcial] = useState([]);
 
     const addSegundos = (tempo) =>{
-        setSegundos(tempo);
+        if(pararTempo === "Iniciar")
+            setSegundos(tempo);
     }
     const addMinutos = (tempo) =>{
-        setMinutos(tempo);
+        if(pararTempo === "Iniciar")
+            setMinutos(tempo);
     }
     const addHoras = (tempo) =>{
-        setHoras(tempo);
+        if(pararTempo === "Iniciar")
+            setHoras(tempo);
     }
 
     const addParciais = () => {
@@ -34,8 +36,7 @@ const Temporizador = (props) => {
 
     const altStop = () => {
         if(segundos !== 0 || minutos !== 0 || horas !== 0 || pararTempo === "Parar"){
-            setStop(!stop)//a primeira vez não está funcionando e está invertido o estado do botão.
-            if(stop){
+            if(pararTempo === "Iniciar"){
                 setPararTempo("Parar");
             } else {
                 setPararTempo("Iniciar");
@@ -44,7 +45,7 @@ const Temporizador = (props) => {
     }
 
     const decrementar = () =>{
-        if(!stop){
+        if(pararTempo === "Parar"){
                 if(segundos > 0){
                 setSegundos(segundos - 1);
                 } else if(segundos === 0){
