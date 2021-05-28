@@ -1,5 +1,4 @@
 import React, { useState } from 'react'
-import Buttons from './Buttons'
 
 const Inputs = (props) => {
     const [seg, setSeg] = useState(0)
@@ -48,20 +47,16 @@ const Inputs = (props) => {
         props.segundos(seg)
         props.minutos(min)
         props.horas(hor)
-        
-        if(seg !== 0 || min !== 0 || hor !== 0){
-            props.stop();
-        }
 
         zerarTempo();
     }
 
     return(
         <form>
-            <input type="number" value={hor} onChange={limitHor} />
-            <input type="number" value={min} onChange={limitMin} />
-            <input type="number" value={seg} onChange={limitSeg} />
-            <button type="submit" onClick={pegarDados}>Adicionar</button>
+            <input type="number" value={hor} onChange={limitHor} id="botao-input1"/>
+            <input type="number" value={min} onChange={limitMin} id="botao-input2" />
+            <input type="number" value={seg} onChange={limitSeg} id="botao-input3" />
+            <button type="submit" onClick={pegarDados} id="botao-input4" >Adicionar</button>
         </form>
     )
 }

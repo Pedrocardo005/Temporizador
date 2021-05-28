@@ -36,3 +36,11 @@
     transform: rotate(360deg);
   }
 }
+
+.botao-input{
+  
+}
+
+.App input{
+  width: 5%;
+}
